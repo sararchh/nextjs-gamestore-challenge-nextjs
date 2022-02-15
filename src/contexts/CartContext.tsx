@@ -35,11 +35,11 @@ export function CartProvider({ children }: CartProviderProps) {
 
   React.useEffect(() => {
     let cartItems: any = localStorage.getItem('cart');
-    setitems(JSON.parse(cartItems))
+    setitems(cartItems ? JSON.parse(cartItems) : [])
   }, []);
 
   React.useEffect(() => {
-    if (items.length > 0) {
+    if (items?.length > 0) {
       localStorage.setItem('cart', JSON.stringify(items))
     }
 
